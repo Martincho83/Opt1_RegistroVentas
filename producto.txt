@@ -1,0 +1,3 @@
+1,teclado,4,20
+2,mouse,20,10
+3,interno,10,20
