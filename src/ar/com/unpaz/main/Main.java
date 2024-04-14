@@ -7,58 +7,51 @@ import  ar.com.unpaz.repositorio.*;
 public class Main {
 
     public static void main(String[] args) {
-        LeerArchivoServicio servProducto = new LeerArchivoServicio();
+
+        LeerArchivoServicio servvicio = new LeerArchivoServicio();
+
+        // Lectura de Productos
         System.out.print("********************\n");
         System.out.print("Lectura de Productos\n");
         System.out.print("********************\n");
-        List<Producto> lista1 = new ArrayList<Producto>();
-        lista1 = servProducto.getListProductos();
-        for (Producto producto : lista1) {
+        List<Producto> productos = servvicio.getListProductos();
+        for (Producto producto : productos) {
             System.out.println("ID; " + producto.getId() + ", Nombre: " + producto.getNombre() + ", Cantidad; " + producto.getCantidad() + ", Precio " + producto.getPrecio());
         }
 
-        LeerArchivoServicio servCliente = new LeerArchivoServicio();
+        // Lectura de Clientes
         System.out.print("********************\n");
         System.out.print("Lectura de Clientes\n");
         System.out.print("********************\n");
-        List<Cliente> lista2 = new ArrayList<Cliente>();
-        lista2 = servCliente.getListClientes();
-        for (Cliente cliente : lista2) {
+        List<Cliente> clientes = servvicio.getListClientes();
+        for (Cliente cliente : clientes) {
             System.out.println("ID; " + cliente.getId() + ", Nombre: " + cliente.getNombre() + ", Apellido: " + cliente.getApellido() + ", Telefono: " + cliente.getTelefono());
         }
 
-        LeerArchivoServicio servDetalle = new LeerArchivoServicio();
+        // Lectura de Detalles
         System.out.print("********************\n");
         System.out.print("Lectura de Detalles\n");
         System.out.print("********************\n");
-        List<Detalle> lista3 = new ArrayList<Detalle>();
-        lista3 = servDetalle.getListDetalles();
-        for (Detalle detalle : lista3) {
+        List<Detalle> detalles = servvicio.getListDetalles();
+        for (Detalle detalle : detalles) {
             System.out.println("ID; " + detalle.getId() + ", Venta: " + detalle.getVenta() + ", Producto: " + detalle.getProducto() + ", Cantidad: " + detalle.getCantidad() + ", Precio: " + detalle.getPrecio());
         }
 
-        LeerArchivoServicio servVenta = new LeerArchivoServicio();
+        // Lectura de Ventas
         System.out.print("********************\n");
         System.out.print("Lectura de Ventas\n");
         System.out.print("********************\n");
-        List<Venta> lista4 = new ArrayList<Venta>();
-        lista4 = servVenta.getListVentas();
-        for (Venta venta : lista4) {
+        List<Venta> ventas  = servvicio.getListVentas();
+        for (Venta venta : ventas) {
             System.out.println("ID; " + venta.getId() + ", Fecha: " + venta.getFecha() + ", Cliente: " + venta.getCliente() + ", Total: " + venta.getTotal());
         }
 
-        LeerArchivoServicio servicio = new LeerArchivoServicio();
-
-        List<Cliente> listaClientes = servicio.getListClientes();
-        List<Venta> listaVentas = servicio.getListVentas();
-
-        GeneradorInforme generadorInforme = new GeneradorInforme();
-
-        List<Informe> informes = generadorInforme.generarInforme(listaClientes, listaVentas);
-
+        // Generación de Informe de Ventas por Cliente
         System.out.print("********************\n");
         System.out.print("Informe Ventas por Clientes\n");
         System.out.print("********************\n");;
+        GeneradorInforme generadorInforme = new GeneradorInforme();
+        List<Informe> informes = generadorInforme.generarInforme(clientes,ventas);
         for (Informe informe : informes) {
             System.out.println(informe);
         }
