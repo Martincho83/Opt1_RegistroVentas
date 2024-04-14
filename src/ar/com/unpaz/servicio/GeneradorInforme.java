@@ -2,10 +2,9 @@ package ar.com.unpaz.servicio;
 
 import ar.com.unpaz.model.*;
 
-import javax.swing.*;
 import java.util.*;
 
-public class GenerarInforme {
+public class GeneradorInforme {
 
     public List<Informe> generarInforme(List<Cliente> clientes, List<Venta> ventas){
         Map<Integer,Informe> informesMap = new HashMap<>();
